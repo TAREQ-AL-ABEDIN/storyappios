@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Users</key>
+	<array>
+		<dict>
+			<key>id</key>
+			<integer>1</integer>
+			<key>name</key>
+			<string>Sami</string>
+			<key>created_at</key>
+			<date>2017-09-27T07:41:53Z</date>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>2</integer>
+			<key>name</key>
+			<string>Khairul</string>
+			<key>created_at</key>
+			<date>2017-09-27T08:41:51Z</date>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>3</integer>
+			<key>name</key>
+			<string>Piyal</string>
+			<key>created_at</key>
+			<date>2017-09-27T09:41:48Z</date>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>4</integer>
+			<key>name</key>
+			<string>Faiza</string>
+			<key>created_at</key>
+			<date>2017-09-27T10:41:46Z</date>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>5</integer>
+			<key>name</key>
+			<string>Tanni</string>
+			<key>created_at</key>
+			<date>2017-09-27T11:41:37Z</date>
+		</dict>
+	</array>
+	<key>Category</key>
+	<array>
+		<dict>
+			<key>id</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Popular</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>2</integer>
+			<key>title</key>
+			<string>Best of this year</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>3</integer>
+			<key>title</key>
+			<string>Romance</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>4</integer>
+			<key>title</key>
+			<string>Horror</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>5</integer>
+			<key>title</key>
+			<string>Mystery</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>6</integer>
+			<key>title</key>
+			<string>Comedy</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>7</integer>
+			<key>title</key>
+			<string>SCI-FI</string>
+			<key>active</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>Stories</key>
+	<array>
+		<dict>
+			<key>id</key>
+			<integer>1</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 1</string>
+			<key>image</key>
+			<string>story_1.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>2</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 2</string>
+			<key>image</key>
+			<string>story_2.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>3</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 3</string>
+			<key>image</key>
+			<string>story_3.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>4</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 4</string>
+			<key>image</key>
+			<string>story_4.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>5</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 5</string>
+			<key>image</key>
+			<string>story_5.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>6</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 6</string>
+			<key>image</key>
+			<string>story_6.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>7</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 7</string>
+			<key>image</key>
+			<string>story_7.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string>Writter Name</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>8</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 8</string>
+			<key>image</key>
+			<string>story_8.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>9</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 9</string>
+			<key>image</key>
+			<string>story_9.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>10</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 10</string>
+			<key>image</key>
+			<string>story_10.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>11</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 11</string>
+			<key>image</key>
+			<string>story_1.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>12</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 12</string>
+			<key>image</key>
+			<string>story_2.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>13</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 13</string>
+			<key>image</key>
+			<string>story_3.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>14</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 14</string>
+			<key>image</key>
+			<string>story_4.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>15</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 15</string>
+			<key>image</key>
+			<string>story_5.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>16</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 16</string>
+			<key>image</key>
+			<string>story_6.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>17</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 17</string>
+			<key>image</key>
+			<string>story_7.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>18</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 18</string>
+			<key>image</key>
+			<string>story_8.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>19</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 19</string>
+			<key>image</key>
+			<string>story_9.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>20</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 20</string>
+			<key>image</key>
+			<string>story_10.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>21</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 21</string>
+			<key>image</key>
+			<string>story_1.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>22</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 22</string>
+			<key>image</key>
+			<string>story_2.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<integer>23</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>title</key>
+			<string>Story 23</string>
+			<key>image</key>
+			<string>story_3.jpg</string>
+			<key>cat_id</key>
+			<integer>1</integer>
+			<key>short_desc</key>
+			<string></string>
+		</dict>
+	</array>
+	<key>About</key>
+	<string>READ the HookUp chat stories that everyone is becoming ìaddicted toî and people ìcanít stop readingî. Snoop on thrilling conversations as they unfold before your eyes. Make CHOICES that determine who LIVES or DIES. Keep your heart racing with new stories added to HookUp Chat Stories weekly.
+
+Whether you have five minutes or five hours, love suspense or horror stories, youíll be on the edge of your seat with twists youíll never see coming.
+
+If youíre a fan of short stories or up for a long read, HookUp Chat Stories will keep you captivated till the very end. Donít miss out on the new app everyone is talking about.
+
+To contact support, please visit: fb.me/HookUpChat
+By using HookUp chat stories, you agree to our Terms of Use 
+
+Please note that HookUp Chat Stories is free to play,</string>
+	<key>Terms</key>
+	<string>These Terms of Service (these ìService Termsî) set forth the legally binding terms and conditions between you and HookUp Chat Stories., its subsidiaries and affiliated companies (ìHookUp Chat Storiesî) that govern your access and use of the HookUp Chat Stories services, products and applications that appear on, or are made available, accessible or downloadable from, (i) the located at fb.me/HookUpChat and (ii) any other third party websites or sources (the ìServicesî) . These Service Terms include and hereby incorporate HookUp Chat Storiesí Privacy Policy, which is currently located at fb.me/HookUpChat and HookUp Chat Storiesí Copyright Policy, which is currently located at fb.me/HookUpChat
+
+BY DOWNLOADING, INSTALLING, USING OR OTHERWISE ACCESSING THE SERVICES, YOU AGREE TO THESE SERVICE TERMS, TO THE EXCLUSION OF ALL OTHER TERMS. IF YOU ARE ENTERING INTO THESE SERVICE TERMS ON BEHALF OF A LEGAL ENTITY, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND SUCH ENTITY TO THESE SERVICE TERMS, IN WHICH CASE ìYOUî OR ìYOURî REFER TO SUCH ENTITY. IF YOU DO NOT HAVE SUCH AUTHORITY OR IF YOU ARE NOT WILLING TO BE BOUND BY THESE SERVICE TERMS, YOU MUST NOT ACCEPT THESE SERVICE TERMS AND YOU MAY NOT DOWNLOAD, INSTALL, USE OR OTHERWISE ACCESS THE SERVICES. USE OF THE SERVICES IS VOID WHERE PROHIBITED.
+
+1. Who Can Use the Services
+By using the Services, you represent that (1) you are age 18 or older, (2) you understand and agree to these Service Terms, and (3) if you are between the ages of 18 and 18+, your legal guardian has reviewed and agrees to these Service Terms.
+
+2. License Grant
+Subject to your compliance at all times with these Service Terms, HookUp Chat Stories grants to you a limited, personal, non-commercial, non-exclusive, non-transferable, non-sublicensable revocable license to use and display (a) the portions of the Services that are freely accessible from the Services or that are, with HookUp Chat Storiesí authorization, made freely accessible from third party websites or sources, and (b) such other portions of the Services accessible on a ìfor-paymentî basis, provided that you have paid the applicable fees and satisfied all applicable conditions.
+
+3. User Content (including Your Content)
+The Services invite or enable you and other users to create, submit, record, post, display, transmit, perform, publish or distribute communications (including but not limited to voice communications), content and materials (including without limitation text, writings, photographs, graphics, images, comments, chat text, personally identifiable information, etc.), including by making the foregoing available to HookUp Chat Stories and other users of the Service, whether via e-mail or through online forums, chat rooms or features, message boards, messaging services, blogs or other functionality of the Services or portions thereof (collectively, ìUser Contentî). You understand that all User Content available in connection with the Services is the sole responsibility of the person from whom such User Content originated.
+
+HookUp Chat Stories has no obligation to accept, display, review, maintain or otherwise exploit any User Content. HookUp Chat Stories has no obligation to pre-screen, review, examine, evaluate or otherwise monitor any User Content for accuracy, validity, legality, decency, integrity or any other quality. You acknowledge and agree that your use of the Services is at your own risk and that by using the Services, you may be exposed to User Content that is offensive, indecent, objectionable or that does not otherwise meet your needs. You bear all risks associated with, the use of any User Content available in connection with the Services. HookUp Chat Stories shall not be liable in any way for any User Content made available via the Services, including, but not limited to, any errors or omissions in any such User Content, or any loss or damage of any kind incurred as a result of the use of such User Content.
+
+Notwithstanding the foregoing, HookUp Chat Stories may for any reason, in its sole discretion and without liability to you or any third party, pre-screen, review, examine, monitor, refuse, remove from the Services, censor, edit, alter, delete, disable access to or otherwise make unavailable any User Content (including without limitation Your Content) without notice. You may bring User Content that you believe violates these Service Terms, or other inappropriate user behavior, to HookUp Chat Storiesí attention by submitting a support ticket at m.me/HookUpChat. User Content that you make available in connection with the Services is referred to herein as ìYour Content.î You agree that Your Content is not confidential. You further agree that Your Content will not be returned to you. You represent and warrant that Your Content is original to you and that you exclusively own the rights to Your Content, including the right to grant all of the rights and licenses in these Service Terms without HookUp Chat Stories incurring any third party obligations or liability arising out of its exercise of such rights and licenses. HookUp Chat Stories does not claim any ownership rights in Your Content and nothing in these Service Terms are deemed to restrict any rights that you may have to use and exploit Your Content. HookUp Chat Stories has no obligation to monitor or enforce your intellectual property rights in or to Your Content. HookUp Chat Stories shall not be responsible for another userís misuse or misappropriation of any of Your Content.
+
+4. Ownership
+All rights, title and interest in and to the Services (including any User Content other than Your Content) are and will remain that is not totally exclusive property of HookUp Chat Stories and its licensors, some of stories collect from online. Other that Your Content, you will to encumber, license, modify, publish, copy, sell, transfer, transmit or in any way exploit, the Services (in whole or in part), except as expressly permitted in writing by HookUp Chat Stories.
+
+5. Indemnification
+You will indemnify, defend and hold the HookUp Chat Stories Parties harmless from and against any and all claims, liabilities, damages, losses, costs, expenses, fees (including reasonable attorneysí fees and court costs) due to, arising from or relating in anyway to (1) Your Content, (2) your (or anyone using your Account) access to or use of the Services, (3) your (or anyone using your Account) violation of these Service Terms, and (4) your (or using your Account) violation of any rights of any other person or entity. HookUp Chat Stories reserves the right, at your expense, to assume the exclusive defense and control of any indemnifiable matter and you agree to cooperate with HookUp Chat Stories to defend these claims.
+
+6. Links to Third Party Websites
+The Services may contain links to third party websites or resources. You acknowledge and agree that HookUp Chat Stories is not responsible or liable for: (i) the availability or accuracy of such websites or resources; or (ii) the content, products, or services on or available from such websites or resources. Links to such websites or resources do not imply any endorsement by HookUp Chat Stories of such websites or resources or the content, products, or services available from such websites or resources. You acknowledge sole responsibility for and assume all risk arising from your use of any such websites or resources. HookUp Chat Stories may remove any links at any time for any reason or for no reason.</string>
+</dict>
+</plist>
