@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import FBSDKLoginKit
 import SystemConfiguration
-//import PageController
+import GoogleMobileAds
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let prefs = UserDefaults.standard
@@ -21,7 +21,6 @@ let baseUrl = "http://www.techmaticbd.com/textstory/public/api"
 let imageUrl = "http://www.techmaticbd.com/textstory/public/categoryImage/"
 let storyImagePath = "http://www.techmaticbd.com/textstory/public/storyImage/"
 let authkey = "TS.online.app"
-
 
 struct ScreenSize
 {
@@ -94,7 +93,7 @@ extension UIWindow {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,VungleSDKDelegate {
 
     var window: UIWindow?
     var storyBoard: UIStoryboard?
@@ -126,12 +125,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var isSetting_flag:Int = 0
     
+    let vungle_placement_id = "DEFAULT-2331611"
+    var isPlayable : Bool = false
+    var bannerView: GADBannerView!
+    
+    let admob_appID = "ca-app-pub-4806809135067780~7012178951"
+    let admob_app_banner_unitID = "ca-app-pub-4806809135067780/8488912151"
+    let admob_app_inters_unitID = "ca-app-pub-4806809135067780/3821704403"
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        //UIApplication.shared.statusBarStyle = .lightContent
-        
+
         UIApplication.shared.isStatusBarHidden = true
         window?.backgroundColor = UIColor.white
+        
+        self.initializeVungle()
         
         if DeviceType.IS_IPHONE_5 || DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P{
             self.storyBoard = getStoryBoard(name: "Main-iPhone5")
@@ -159,9 +167,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.noConnectionVC?.view.alpha = 0
         self.window?.addSubview((noConnectionVC?.view)!)
         
+        GADMobileAds.configure(withApplicationID: admob_appID)
+    
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.frame.origin.y = ScreenSize.SCREEN_HEIGHT - 100
+        bannerView.backgroundColor = UIColor.red
+        self.window!.addSubview(bannerView)
+        self.window!.bringSubview(toFront: bannerView)
         
+        bannerView.adUnitID = admob_app_banner_unitID
+        bannerView.rootViewController = self.window?.rootViewController
+        bannerView.load(GADRequest())
+
         return true
     }
+    
+    func initializeVungle(){
+        let appID = "5c8152dd38bae442557b0e44";
+        let placementIDsArray:Array<String> = ["DEFAULT-2331611", "UPHOOK-4550675"];
+        
+        let sdk:VungleSDK = VungleSDK.shared()
+        do {
+            try sdk.start(withAppId: appID, placements: placementIDsArray)
+        }
+        catch let error as NSError {
+            print("Error while starting VungleSDK : \(error.domain)")
+            return;
+        }
+        
+        sdk.delegate = self
+    }
+    
+    //MARK: - Vungle & adMob
+    func vungleSDKDidInitialize() {
+        print("vungleSDKDidInitialize")
+        
+        do {
+            try VungleSDK.shared().loadPlacement(withID: vungle_placement_id)
+        }
+        catch let error as NSError {
+            print("Unable to load placement with reference ID :\(vungle_placement_id), Error: \(error)")
+            return
+        }
+    }
+    
+    func vungleAdPlayabilityUpdate(_ isAdPlayable: Bool, placementID: String?, error: Error?) {
+        print("vungleAdPlayabilityUpdate")
+        
+        if (placementID == vungle_placement_id) {
+            self.isPlayable = isAdPlayable;
+        }
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -179,7 +236,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         if (prefs.value(forKey:"ageRestriction") != nil && (prefs.value(forKey:"ageRestriction") as! String == "YES")) {
-            self.requestForData()
+            //self.requestForData()
         }
     }
     

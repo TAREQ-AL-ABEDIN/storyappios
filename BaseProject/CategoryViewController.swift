@@ -57,10 +57,6 @@ class CategoryViewController: UIViewController {
                                     animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     // MARK: - Button Action
     
     @IBAction func showSidePanel(){

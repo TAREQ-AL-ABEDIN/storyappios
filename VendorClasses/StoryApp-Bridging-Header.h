@@ -11,6 +11,7 @@
 
 #import "FMDB.h"
 #import "IIViewDeckController.h"
+#import <VungleSDK/VungleSDK.h>
 
 
 #endif /* StoryApp_Bridging_Header_h */

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MyFileDownloaderDelegate {
+class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MyFileDownloaderDelegate,GADInterstitialDelegate {
     
     @IBOutlet weak var scrollView : UIScrollView?
     @IBOutlet weak var listTable : UITableView?
@@ -39,6 +40,9 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     var contentArray : NSMutableArray? = NSMutableArray()
     var did_tap = 0
+    
+    var interstitial: GADInterstitial!
+
     
     func showInfo(){
         
@@ -139,6 +143,9 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         self.listTable?.addGestureRecognizer(tap)
         self.containerView?.addGestureRecognizer(tap)
+        
+        //admob ad
+        interstitial = createAndLoadInterstitial()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,7 +158,13 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
     }
     
-    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: appDelegate.admob_app_inters_unitID)
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+
     // MARK: - Button Action
     
     @IBAction func backAction(){
@@ -170,6 +183,19 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         self.did_tap = 1
         self.contentArray?.add("++++++")
+        
+        if ((contentArray?.count)! % 5) == 1{
+            //appDelegate.initializeVungle()
+            
+            if appDelegate.isPlayable{
+                do {
+                    try VungleSDK.shared().playAd(self, options: nil, placementID: appDelegate.vungle_placement_id)
+                }
+                catch let error as NSError {
+                    print("Error encountered playing ad: + \(error)");
+                }
+            }
+        }
         
         if (contentArray?.count)! > (dataArray?.count)!{
             return
@@ -286,5 +312,41 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
         else{
             return ""
         }
+    }
+    
+    //MARK:- Admob
+    /// Tells the delegate an ad request succeeded.
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print("interstitialDidReceiveAd")
+        
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that an interstitial will be presented.
+    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        print("interstitialWillPresentScreen")
+    }
+    
+    /// Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    /// Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        print("interstitialWillLeaveApplication")
     }
 }

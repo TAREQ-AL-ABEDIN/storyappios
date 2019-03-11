@@ -31,6 +31,8 @@
 	<string>615329945299026</string>
 	<key>FacebookDisplayName</key>
 	<string>Catch Salmon</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-4806809135067780~7012178951</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbauth2</string>
