@@ -22,6 +22,15 @@ let imageUrl = "http://www.techmaticbd.com/textstory/public/categoryImage/"
 let storyImagePath = "http://www.techmaticbd.com/textstory/public/storyImage/"
 let authkey = "TS.online.app"
 
+let product_adventure = "com.storyapp.adventure"
+let product_flashFiction = "com.storyapp.flashfiction"
+let product_scifi = "com.storyapp.scifi"
+let product_allCategories = "com.storyapp.all"
+let product_removeAds = "com.storyapp.removeAds"
+
+let paid_categories = [2,7,11]
+let paid_products = [product_adventure,product_flashFiction,product_scifi,product_allCategories,product_removeAds]
+
 struct ScreenSize
 {
     static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
@@ -125,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,VungleSDKDelegate {
     
     var isSetting_flag:Int = 0
     
-    let vungle_placement_id = "DEFAULT-2331611"
+    let vungle_placement_id = "UPHOOK-4550675"
     var isPlayable : Bool = false
     var bannerView: GADBannerView!
     
@@ -170,14 +179,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,VungleSDKDelegate {
         GADMobileAds.configure(withApplicationID: admob_appID)
     
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.frame.origin.y = ScreenSize.SCREEN_HEIGHT - 100
-        bannerView.backgroundColor = UIColor.red
+        bannerView.frame.size.width = ScreenSize.SCREEN_WIDTH
+        bannerView.frame.origin.y = ScreenSize.SCREEN_HEIGHT - 50
+        bannerView.backgroundColor = UIColor.clear
         self.window!.addSubview(bannerView)
         self.window!.bringSubview(toFront: bannerView)
         
         bannerView.adUnitID = admob_app_banner_unitID
         bannerView.rootViewController = self.window?.rootViewController
-        bannerView.load(GADRequest())
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID,  // All simulators
+            "2077ef9a63d2b398840261c8221a0c9b"];  // Sample device ID
+        
+        bannerView.load(request)
 
         return true
     }

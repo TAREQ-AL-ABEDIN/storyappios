@@ -42,6 +42,7 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var did_tap = 0
     
     var interstitial: GADInterstitial!
+    var ad_shown_already = false
 
     
     func showInfo(){
@@ -145,6 +146,7 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.containerView?.addGestureRecognizer(tap)
         
         //admob ad
+        ad_shown_already = false
         interstitial = createAndLoadInterstitial()
     }
     
@@ -153,16 +155,21 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 0
+        }
+        
         if storyInfo != nil{
             appDelegate.storiesDetailsDataSync.requestForSroriesDetails(id: String(format:"%d",storyInfo?.object(forKey: "id") as! Int))
         }
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-        var interstitial = GADInterstitial(adUnitID: appDelegate.admob_app_inters_unitID)
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
-        return interstitial
+        let interstitials = GADInterstitial(adUnitID: appDelegate.admob_app_inters_unitID)
+        interstitials.delegate = self
+        interstitials.load(GADRequest())
+        return interstitials
     }
 
     // MARK: - Button Action
@@ -319,7 +326,7 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         print("interstitialDidReceiveAd")
         
-        if interstitial.isReady {
+        if interstitial.isReady && !ad_shown_already {
             interstitial.present(fromRootViewController: self)
         }
     }
@@ -332,11 +339,14 @@ class ReaderViewController: UIViewController,UITableViewDataSource,UITableViewDe
     /// Tells the delegate that an interstitial will be presented.
     func interstitialWillPresentScreen(_ ad: GADInterstitial) {
         print("interstitialWillPresentScreen")
+        self.ad_shown_already = true
+        //appDelegate.bannerView.alpha = 0
     }
     
     /// Tells the delegate the interstitial is to be animated off the screen.
     func interstitialWillDismissScreen(_ ad: GADInterstitial) {
         print("interstitialWillDismissScreen")
+        appDelegate.bannerView.alpha = 1
     }
     
     /// Tells the delegate the interstitial had been animated off the screen.

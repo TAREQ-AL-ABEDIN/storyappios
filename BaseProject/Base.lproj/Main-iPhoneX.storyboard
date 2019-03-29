@@ -205,7 +205,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B0g-uc-w1O">
-                                <rect key="frame" x="132" y="733" width="24" height="24"/>
+                                <rect key="frame" x="131" y="733" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="ic_instagram-iPhone6P.png"/>
                                 <connections>
@@ -221,7 +221,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="F3B-YW-J8G">
-                                <rect key="frame" x="212" y="734" width="27" height="23"/>
+                                <rect key="frame" x="211" y="734" width="27" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="ic_twitter-iphone6P.png"/>
                                 <connections>
@@ -229,7 +229,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i46-6S-peL">
-                                <rect key="frame" x="315" y="762" width="40" height="40"/>
+                                <rect key="frame" x="314" y="762" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="ic_setting-iPhone6P.png"/>
                                 <connections>
@@ -666,7 +666,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Find Stories" textAlignment="natural" minimumFontSize="17" id="ACO-Km-dgJ">
-                                        <rect key="frame" x="41" y="5" width="220" height="35"/>
+                                        <rect key="frame" x="41" y="5" width="219" height="35"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
@@ -862,7 +862,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo-iPhone6P.png" id="fme-i7-xGI">
-                                <rect key="frame" x="164" y="40" width="68" height="35"/>
+                                <rect key="frame" x="163" y="40" width="68" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tha-Is-nbh">
@@ -881,7 +881,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="yyyy" textAlignment="natural" selectable="NO" id="7Xo-8c-Rsv">
-                                <rect key="frame" x="15" y="108" width="345" height="671"/>
+                                <rect key="frame" x="15" y="108" width="345" height="670"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1138,7 +1138,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo-iPhone6P.png" id="xFD-xf-pjS">
-                                <rect key="frame" x="164" y="40" width="68" height="35"/>
+                                <rect key="frame" x="163" y="40" width="68" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ug7-I4-6YW">
@@ -1157,7 +1157,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" id="4FD-e2-2aG">
-                                <rect key="frame" x="15" y="108" width="345" height="671"/>
+                                <rect key="frame" x="15" y="108" width="345" height="670"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1439,7 +1439,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qs1-XZ-kjE">
-                                <rect key="frame" x="132" y="724" width="24" height="24"/>
+                                <rect key="frame" x="131" y="724" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="ic_instagram-iPhone6P.png"/>
                                 <connections>
@@ -1455,7 +1455,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OnT-cy-niW">
-                                <rect key="frame" x="212" y="724" width="27" height="23"/>
+                                <rect key="frame" x="211" y="724" width="27" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="ic_twitter-iphone6P.png"/>
                                 <connections>
@@ -1463,7 +1463,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SRs-NB-piD">
-                                <rect key="frame" x="315" y="762" width="40" height="40"/>
+                                <rect key="frame" x="314" y="762" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="ic_setting-iPhone6P.png"/>
                                 <connections>
@@ -1503,6 +1503,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="214" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_lock-iPhone6P.png" id="Esw-gb-SFF">
+                                                    <rect key="frame" x="82" y="61" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <view alpha="0.30000001192092896" contentMode="scaleToFill" id="bhL-XJ-yc5">
                                                     <rect key="frame" x="0.0" y="140" width="214" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -1520,6 +1524,7 @@
                                         <connections>
                                             <outlet property="bottoMaskView" destination="bhL-XJ-yc5" id="Xbw-aD-jHx"/>
                                             <outlet property="cellImageView" destination="1jv-0d-Gnw" id="xxe-Jx-UgH"/>
+                                            <outlet property="imgLock" destination="Esw-gb-SFF" id="cOT-2z-tI4"/>
                                             <outlet property="lblTitle" destination="kpX-GS-S4K" id="maU-bq-L9j"/>
                                         </connections>
                                     </collectionViewCell>

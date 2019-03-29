@@ -176,7 +176,17 @@ class LeftMenuViewController: UIViewController,UITableViewDelegate, UITableViewD
         
         let info = dataArray[indexPath.row]
         cell.lblTitle?.text = info.object(forKey: "name") as? String
-        cell.imgLock?.alpha = 0
+        
+        let cid = info.value(forKey: "id") as! Int
+        
+        if paid_categories.contains(cid){
+            cell.imgLock?.alpha = 1
+            cell.imgIcon?.alpha = 0
+        }
+        else{
+            cell.imgLock?.alpha = 0
+            cell.imgIcon?.alpha = 1
+        }
         
         return cell
     }
@@ -184,21 +194,31 @@ class LeftMenuViewController: UIViewController,UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)")
         
-        var storyboard = UIStoryboard.init(name: "Main-iPhone5", bundle: nil)
+        let info = dataArray[indexPath.row]
+        let cid = info.value(forKey: "id") as! Int
         
-        if DeviceType.IS_IPHONE_6{
-            storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        if paid_categories.contains(cid){
+            
         }
-        else if DeviceType.IS_IPHONE_6P{
-            storyboard = UIStoryboard.init(name: "Main-iPhone6P", bundle: nil)
-        }
-        else if DeviceType.IS_IPHONE_X || DeviceType.IS_IPHONE_XR{
-            storyboard = UIStoryboard.init(name: "Main-iPhoneX", bundle: nil)
+        else{
+            var storyboard = UIStoryboard.init(name: "Main-iPhone5", bundle: nil)
+            
+            if DeviceType.IS_IPHONE_6{
+                storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            }
+            else if DeviceType.IS_IPHONE_6P{
+                storyboard = UIStoryboard.init(name: "Main-iPhone6P", bundle: nil)
+            }
+            else if DeviceType.IS_IPHONE_X || DeviceType.IS_IPHONE_XR{
+                storyboard = UIStoryboard.init(name: "Main-iPhoneX", bundle: nil)
+            }
+            
+            let hvc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+            hvc?.storyInfo = info
+            appDelegate.currentNaviCon?.pushViewController(hvc!, animated: true)
         }
         
-        let hvc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        hvc?.storyInfo = dataArray[indexPath.row]
-        appDelegate.currentNaviCon?.pushViewController(hvc!, animated: true)
+        
         self.didTapCloseButton()
     }
     

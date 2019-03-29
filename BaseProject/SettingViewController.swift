@@ -32,6 +32,13 @@ class SettingViewController: UIViewController {
         self.borderRound(imgView: imgViewNotification)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 1
+        }
+    }
+    
     func borderRound(imgView:UIImageView){
         imgView.layer.cornerRadius = 5.0
         imgView.clipsToBounds = true

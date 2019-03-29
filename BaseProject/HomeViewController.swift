@@ -239,6 +239,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource,UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         reloadData()
+        storyCollectionView?.frame.size.height = ScreenSize.SCREEN_HEIGHT - appDelegate.bannerView.frame.size.height + 20
+        
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 1
+        }
     }
 
     override func viewDidLoad() {

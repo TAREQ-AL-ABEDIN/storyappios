@@ -55,7 +55,7 @@ class RemoveAdsViewController: UIViewController {
     }
     
     @IBAction func unlockAllCategories(){
-        lblPrice?.text = "4.99$"
+        lblPrice?.text = "1.99$"
         
         btnRemoveAds?.isSelected = false
         btnUnlockAllCat?.isSelected = true

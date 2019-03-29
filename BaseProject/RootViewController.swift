@@ -69,6 +69,12 @@ class RootViewController: UIViewController,UICollectionViewDataSource, UICollect
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 0
+        }
+    }
+    
     /*func scrollViewDidScroll(_ scrollView: UIScrollView) {
      if mList.count > 0 {
      let centerX: CGFloat = (listCollectionView?.center.x)!

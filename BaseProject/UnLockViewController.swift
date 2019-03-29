@@ -26,10 +26,19 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
         let mqdbm = MyQueryDBManager.sharedManager() as! MyQueryDBManager
         _ = mqdbm.openDB()
         
-        self.dataArray = mqdbm.getCategoryList() as! [NSDictionary]
-        print("self.dataArray = \(String(describing: self.dataArray))")
+        let categories = mqdbm.getCategoryList() as! [NSDictionary]
         
         mqdbm.closeDB()
+        
+        for cat in categories{
+            let cat_id = (cat as NSDictionary).value(forKey: "id") as! Int
+            
+            if paid_categories.contains(cat_id){
+                dataArray.append(cat)
+            }
+        }
+        
+        print("self.dataArray = \(String(describing: self.dataArray))")
         
         self.myCollectionView?.reloadData()
         focusToCurrentIndex()
@@ -41,6 +50,7 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
         self.myCollectionView?.dataSource = self
         self.myCollectionView?.delegate = self
         
+        lblPrice?.text = "0.99$"
         self.reloadData()
     }
 
@@ -62,7 +72,7 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
     }
     
     @IBAction func unlockAllCategories(){
-        lblPrice?.text = "4.99$"
+        lblPrice?.text = "1.99$"
         is_all_selected = true
         myCollectionView?.reloadData()
         

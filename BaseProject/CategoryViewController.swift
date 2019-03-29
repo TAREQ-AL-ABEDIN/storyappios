@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController,GADInterstitialDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -19,6 +20,9 @@ class CategoryViewController: UIViewController {
     let flowLayout = ZoomFlowLayout()
     var dataArray = [NSDictionary]()
     var fileDownloadsInProgress : NSMutableDictionary? = NSMutableDictionary()
+    
+    var interstitial: GADInterstitial!
+    var ad_shown_already = false
     
     func reloadData(){
         
@@ -55,6 +59,16 @@ class CategoryViewController: UIViewController {
         collectionView.scrollToItem(at: midIndexPath,
                                     at: .centeredHorizontally,
                                     animated: false)
+        
+        //admob ad
+        ad_shown_already = false
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 1
+        }
     }
     
     // MARK: - Button Action
@@ -88,6 +102,53 @@ class CategoryViewController: UIViewController {
         appDelegate.isSetting_flag = 1
         self.navigationController?.pushViewController(svc!, animated: true)
     }
+    
+    //MARK:- Admob
+    /// Tells the delegate an ad request succeeded.
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print("interstitialDidReceiveAd")
+        
+        if interstitial.isReady && !ad_shown_already {
+            interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that an interstitial will be presented.
+    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        print("interstitialWillPresentScreen")
+        self.ad_shown_already = true
+        appDelegate.bannerView.alpha = 0
+    }
+    
+    /// Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    /// Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialDidDismissScreen")
+        appDelegate.bannerView.alpha = 1
+    }
+    
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        print("interstitialWillLeaveApplication")
+    }
+    
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        let interstitials = GADInterstitial(adUnitID: appDelegate.admob_app_inters_unitID)
+        interstitials.delegate = self
+        interstitials.load(GADRequest())
+        return interstitials
+    }
 }
 
 
@@ -112,6 +173,16 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         if dataArray.count > 0{
             let cat_info = dataArray[indexPath.row % dataArray.count]
             cell.lblTitle.text = (cat_info.value(forKey: "name") as! String)
+            
+            //free or paid
+            let cid = cat_info.value(forKey: "id") as! Int
+            
+            if paid_categories.contains(cid){
+                cell.imgLock?.alpha = 1
+            }
+            else{
+                cell.imgLock?.alpha = 0
+            }
             
             //image
             var imageFile = self.getValue(value: (cat_info.value(forKey: "photo")) as? NSString! as? String) as NSString
@@ -171,21 +242,31 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var storyboard = UIStoryboard.init(name: "Main-iPhone5", bundle: nil)
         
-        if DeviceType.IS_IPHONE_6{
-            storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        }
-        else if DeviceType.IS_IPHONE_6P{
-            storyboard = UIStoryboard.init(name: "Main-iPhone6P", bundle: nil)
-        }
-        else if DeviceType.IS_IPHONE_X || DeviceType.IS_IPHONE_XR{
-            storyboard = UIStoryboard.init(name: "Main-iPhoneX", bundle: nil)
-        }
+        //free or paid
+        let cat_info = dataArray[indexPath.row % dataArray.count]
+        let cid = cat_info.value(forKey: "id") as! Int
         
-        let hvc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        hvc?.storyInfo = dataArray[indexPath.row % dataArray.count]
-        appDelegate.currentNaviCon?.pushViewController(hvc!, animated: true)
+        if paid_categories.contains(cid){
+            
+        }
+        else{
+            var storyboard = UIStoryboard.init(name: "Main-iPhone5", bundle: nil)
+            
+            if DeviceType.IS_IPHONE_6{
+                storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            }
+            else if DeviceType.IS_IPHONE_6P{
+                storyboard = UIStoryboard.init(name: "Main-iPhone6P", bundle: nil)
+            }
+            else if DeviceType.IS_IPHONE_X || DeviceType.IS_IPHONE_XR{
+                storyboard = UIStoryboard.init(name: "Main-iPhoneX", bundle: nil)
+            }
+            
+            let hvc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+            hvc?.storyInfo = cat_info
+            appDelegate.currentNaviCon?.pushViewController(hvc!, animated: true)
+        }
     }
     
     //MARK: - Other Function
@@ -219,6 +300,5 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         collectionView?.reloadItems(at: [indexPath])
     }
-    
 }
 

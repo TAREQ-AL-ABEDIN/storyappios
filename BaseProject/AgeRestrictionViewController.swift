@@ -14,6 +14,18 @@ class AgeRestrictionViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 0
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if appDelegate.bannerView != nil{
+            appDelegate.bannerView.alpha = 1
+        }
+    }
+    
     // MARK: - Button Action    
     
     @IBAction func iAmOverAction(){
