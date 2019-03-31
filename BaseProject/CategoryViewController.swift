@@ -178,7 +178,18 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             let cid = cat_info.value(forKey: "id") as! Int
             
             if paid_categories.contains(cid){
-                cell.imgLock?.alpha = 1
+                if cid == 2 && ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                    cell.imgLock?.alpha = 0
+                }
+                else if cid == 7 && ((prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                    cell.imgLock?.alpha = 0
+                }
+                else if cid == 11 && ((prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                    cell.imgLock?.alpha = 0
+                }
+                else{
+                    cell.imgLock?.alpha = 1
+                }
             }
             else{
                 cell.imgLock?.alpha = 0
@@ -247,26 +258,78 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         let cat_info = dataArray[indexPath.row % dataArray.count]
         let cid = cat_info.value(forKey: "id") as! Int
         
-        if paid_categories.contains(cid){
-            
+        if paid_categories.contains(cid) {
+            if cid == 2 && ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                self.goNext(withInfo: cat_info)
+            }
+            else if cid == 7 && ((prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                self.goNext(withInfo: cat_info)
+            }
+            else if cid == 11 && ((prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                self.goNext(withInfo: cat_info)
+            }
+            else{
+                let alert = UIAlertController(title: "", message: "Do you want to buy this chapter with 0.99$", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "Buy", style: .default, handler: { action in
+                    
+                    #if (arch(i386) || arch(x86_64)) && os(iOS)
+                    print("It's an iOS Simulator")
+                    
+                    var key = ""
+                    
+                    if cid == 2{
+                        key = product_adventure
+                    }
+                    else if cid == 7 {
+                        key = product_flashFiction
+                    }
+                    else if cid == 11 {
+                        key = product_scifi
+                    }
+                    
+                    prefs.set("purchased", forKey: key)
+                    prefs.synchronize()
+                    collectionView.reloadData()
+                    
+                    #else
+                    print("It's a device")
+                    //[appDelegate showLoadingPurchase];
+                    //MKStoreManager.shared().buyUnit("Chapter \(chapter.cid())")
+                    #endif
+                    
+                    alert.dismiss(animated: true)
+                })
+                let noButton = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                alert.addAction(noButton)
+                present(alert, animated: true)
+            }
         }
         else{
-            var storyboard = UIStoryboard.init(name: "Main-iPhone5", bundle: nil)
-            
-            if DeviceType.IS_IPHONE_6{
-                storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            }
-            else if DeviceType.IS_IPHONE_6P{
-                storyboard = UIStoryboard.init(name: "Main-iPhone6P", bundle: nil)
-            }
-            else if DeviceType.IS_IPHONE_X || DeviceType.IS_IPHONE_XR{
-                storyboard = UIStoryboard.init(name: "Main-iPhoneX", bundle: nil)
-            }
-            
-            let hvc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-            hvc?.storyInfo = cat_info
-            appDelegate.currentNaviCon?.pushViewController(hvc!, animated: true)
+            self.goNext(withInfo: cat_info)
         }
+    }
+    
+    func goNext(withInfo : NSDictionary){
+        var storyboard = UIStoryboard.init(name: "Main-iPhone5", bundle: nil)
+        
+        if DeviceType.IS_IPHONE_6{
+            storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        }
+        else if DeviceType.IS_IPHONE_6P{
+            storyboard = UIStoryboard.init(name: "Main-iPhone6P", bundle: nil)
+        }
+        else if DeviceType.IS_IPHONE_X || DeviceType.IS_IPHONE_XR{
+            storyboard = UIStoryboard.init(name: "Main-iPhoneX", bundle: nil)
+        }
+        
+        let hvc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+        hvc?.storyInfo = withInfo
+        appDelegate.currentNaviCon?.pushViewController(hvc!, animated: true)
     }
     
     //MARK: - Other Function
