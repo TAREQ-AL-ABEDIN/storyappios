@@ -34,7 +34,7 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
             let cat_id = (cat as NSDictionary).value(forKey: "id") as! Int
             
             if paid_categories.contains(cat_id){
-                dataArray.append(cat)
+                   dataArray.append(cat)
             }
         }
         
@@ -72,6 +72,19 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
     }
     
     @IBAction func unlockAllCategories(){
+        
+        if (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
+            let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+            
+            let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                alert.dismiss(animated: true)
+            })
+            
+            alert.addAction(yesButton)
+            present(alert, animated: true)
+            return
+        }
+        
         lblPrice?.text = "1.99$"
         is_all_selected = true
         myCollectionView?.reloadData()
@@ -101,6 +114,128 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func purchaseAction(){
+        
+        if is_all_selected{
+            
+            if (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
+                let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                present(alert, animated: true)
+            }
+            else{
+                let alert = UIAlertController(title: "", message: "Do you want to buy all chapter with 1.99$", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "Buy", style: .default, handler: { action in
+                    
+                    #if (arch(i386) || arch(x86_64)) && os(iOS)
+                    print("It's an iOS Simulator")
+                    
+                    prefs.set("purchased", forKey: product_allCategories)
+                    prefs.synchronize()
+                    
+                    #else
+                    print("It's a device")
+                    //[appDelegate showLoadingPurchase];
+                    //MKStoreManager.shared().buyUnit("Chapter \(chapter.cid())")
+                    #endif
+                    
+                    alert.dismiss(animated: true)
+                })
+                let noButton = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                alert.addAction(noButton)
+                present(alert, animated: true)
+            }
+        }
+        else{
+            
+            if (prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") && (prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") && (prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased"){
+                let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                present(alert, animated: true)
+                return
+            }
+            
+            let info = self.dataArray[self.selected_index]
+            let cid = info.value(forKey: "id") as! Int
+            
+            if cid == 2 && ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                showAlert()
+            }
+            else if cid == 7 && ((prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                showAlert()
+            }
+            else if cid == 11 && ((prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
+                showAlert()
+            }
+            else{
+                let alert = UIAlertController(title: "", message: "Do you want to buy this chapter with 0.99$", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "Buy", style: .default, handler: { action in
+                    
+                    
+                    var key = ""
+                    
+                    if cid == 2{
+                        key = product_adventure
+                    }
+                    else if cid == 7 {
+                        key = product_flashFiction
+                    }
+                    else if cid == 11 {
+                        key = product_scifi
+                    }
+                    
+                    #if (arch(i386) || arch(x86_64)) && os(iOS)
+                    print("It's an iOS Simulator")
+                    
+                    prefs.set("purchased", forKey: key)
+                    prefs.synchronize()
+                    
+                    #else
+                    print("It's a device")
+                    //[appDelegate showLoadingPurchase];
+                    //MKStoreManager.shared().buyUnit("Chapter \(chapter.cid())")
+                    #endif
+                    
+                    alert.dismiss(animated: true)
+                })
+                let noButton = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                alert.addAction(noButton)
+                present(alert, animated: true)
+            }
+        }
+        
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title: "", message: "You have already purchased this category", preferredStyle: .alert)
+        
+        let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+            alert.dismiss(animated: true)
+        })
+        
+        alert.addAction(yesButton)
+        present(alert, animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

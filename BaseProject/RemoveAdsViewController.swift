@@ -45,6 +45,19 @@ class RemoveAdsViewController: UIViewController {
     }
     
     @IBAction func removeAction(){
+        
+        if (prefs.value(forKey: product_removeAds) != nil && (prefs.value(forKey: product_removeAds) as! String) == "purchased"){
+            let alert = UIAlertController(title: "", message: "You have already remove ads", preferredStyle: .alert)
+            
+            let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                alert.dismiss(animated: true)
+            })
+            
+            alert.addAction(yesButton)
+            present(alert, animated: true)
+            return
+        }
+        
         lblPrice?.text = "1.99$"
         
         btnRemoveAds?.isSelected = true
@@ -55,6 +68,19 @@ class RemoveAdsViewController: UIViewController {
     }
     
     @IBAction func unlockAllCategories(){
+        
+        if (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
+            let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+            
+            let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                alert.dismiss(animated: true)
+            })
+            
+            alert.addAction(yesButton)
+            present(alert, animated: true)
+            return
+        }
+        
         lblPrice?.text = "1.99$"
         
         btnRemoveAds?.isSelected = false

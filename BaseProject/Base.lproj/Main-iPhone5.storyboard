@@ -1205,16 +1205,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <state key="normal" backgroundImage="ic_close3-iPhone6P.png"/>
                                         <connections>
-                                            <action selector="backAction" destination="jmc-bp-JGT" eventType="touchUpInside" id="eb9-sJ-2m4"/>
+                                            <action selector="backRootAction" destination="Mm5-aS-ivu" eventType="touchUpInside" id="Vo6-GU-Qqg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3jl-be-sla">
                                         <rect key="frame" x="237" y="202" width="83" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <state key="normal" backgroundImage="ic_ok-iPhone6P.png"/>
-                                        <connections>
-                                            <action selector="backAction" destination="jmc-bp-JGT" eventType="touchUpInside" id="4jx-t3-5ax"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hZg-FH-ySk">
                                         <rect key="frame" x="120" y="162" width="80" height="25"/>
@@ -1766,7 +1763,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <state key="normal" backgroundImage="ic_close3-iPhone6P.png"/>
                                         <connections>
-                                            <action selector="backAction" destination="jmc-bp-JGT" eventType="touchUpInside" id="sjz-i5-3MZ"/>
+                                            <action selector="backRootAction" destination="5e7-WT-7Ay" eventType="touchUpInside" id="FQy-Lr-YOX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="esB-GF-JJO">
@@ -1774,7 +1771,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <state key="normal" backgroundImage="ic_ok-iPhone6P.png"/>
                                         <connections>
-                                            <action selector="backAction" destination="jmc-bp-JGT" eventType="touchUpInside" id="yiT-h8-a0x"/>
+                                            <action selector="purchaseAction" destination="5e7-WT-7Ay" eventType="touchUpInside" id="X3x-Gm-hTY"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9wr-u2-CgU">
