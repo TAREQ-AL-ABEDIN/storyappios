@@ -1212,6 +1212,9 @@
                                         <rect key="frame" x="237" y="202" width="83" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <state key="normal" backgroundImage="ic_ok-iPhone6P.png"/>
+                                        <connections>
+                                            <action selector="purchaseAction" destination="Mm5-aS-ivu" eventType="touchUpInside" id="gTP-fk-0Ga"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hZg-FH-ySk">
                                         <rect key="frame" x="120" y="162" width="80" height="25"/>

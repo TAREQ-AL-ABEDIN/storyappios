@@ -158,7 +158,7 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
         }
         else{
             
-            if (prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") && (prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") && (prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased"){
+            if ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") && (prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") && (prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased")) || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
                 let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
                 
                 let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -175,12 +175,15 @@ class UnLockViewController: UIViewController,UICollectionViewDataSource, UIColle
             
             if cid == 2 && ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
                 showAlert()
+                return
             }
             else if cid == 7 && ((prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
                 showAlert()
+                return
             }
             else if cid == 11 && ((prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased") || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased")){
                 showAlert()
+                return
             }
             else{
                 let alert = UIAlertController(title: "", message: "Do you want to buy this chapter with 0.99$", preferredStyle: .alert)

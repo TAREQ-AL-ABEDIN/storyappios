@@ -69,7 +69,7 @@ class RemoveAdsViewController: UIViewController {
     
     @IBAction func unlockAllCategories(){
         
-        if (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
+        if ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") && (prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") && (prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased")) || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased") {
             let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
             
             let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -91,6 +91,19 @@ class RemoveAdsViewController: UIViewController {
     }
     
     @IBAction func unlockSelectedCategory(){
+        
+        if ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") && (prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") && (prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased")) || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased") {
+            let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+            
+            let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                alert.dismiss(animated: true)
+            })
+            
+            alert.addAction(yesButton)
+            present(alert, animated: true)
+            return
+        }
+        
         lblPrice?.text = "0.99$"
         
         btnRemoveAds?.isSelected = false
@@ -101,6 +114,108 @@ class RemoveAdsViewController: UIViewController {
         
         let uvc = appDelegate.storyBoard?.instantiateViewController(withIdentifier: "UnLockViewController") as? UnLockViewController
         self.navigationController?.pushViewController(uvc!, animated: true)
+    }
+    
+    @IBAction func purchaseAction(){
+        
+        if (btnUnlockAllCat?.isSelected)!{
+            
+            if (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
+                let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                present(alert, animated: true)
+            }
+            else{
+                let alert = UIAlertController(title: "", message: "Do you want to buy all chapter with 1.99$", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "Buy", style: .default, handler: { action in
+                    
+                    #if (arch(i386) || arch(x86_64)) && os(iOS)
+                    print("It's an iOS Simulator")
+                    
+                    prefs.set("purchased", forKey: product_allCategories)
+                    prefs.synchronize()
+                    
+                    #else
+                    print("It's a device")
+                    //[appDelegate showLoadingPurchase];
+                    //MKStoreManager.shared().buyUnit("Chapter \(chapter.cid())")
+                    #endif
+                    
+                    alert.dismiss(animated: true)
+                })
+                let noButton = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                alert.addAction(noButton)
+                present(alert, animated: true)
+            }
+        }
+        if (btnRemoveAds?.isSelected)!{
+            
+            if (prefs.value(forKey: product_removeAds) != nil && (prefs.value(forKey: product_removeAds) as! String) == "purchased"){
+                let alert = UIAlertController(title: "", message: "You have already remove ads", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                present(alert, animated: true)
+            }
+            else{
+                let alert = UIAlertController(title: "", message: "Do you want to remove ads with 0.99$", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "Buy", style: .default, handler: { action in
+                    
+                    #if (arch(i386) || arch(x86_64)) && os(iOS)
+                    print("It's an iOS Simulator")
+                    
+                    prefs.set("purchased", forKey: product_removeAds)
+                    prefs.synchronize()
+                    
+                    #else
+                    print("It's a device")
+                    //[appDelegate showLoadingPurchase];
+                    //MKStoreManager.shared().buyUnit("Chapter \(chapter.cid())")
+                    #endif
+                    
+                    alert.dismiss(animated: true)
+                })
+                let noButton = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                alert.addAction(noButton)
+                present(alert, animated: true)
+            }
+        }
+        else{
+            
+            if ((prefs.value(forKey: product_adventure) != nil && (prefs.value(forKey: product_adventure) as! String) == "purchased") && (prefs.value(forKey: product_flashFiction) != nil && (prefs.value(forKey: product_flashFiction) as! String) == "purchased") && (prefs.value(forKey: product_scifi) != nil && (prefs.value(forKey: product_scifi) as! String) == "purchased")) || (prefs.value(forKey: product_allCategories) != nil && (prefs.value(forKey: product_allCategories) as! String) == "purchased"){
+                let alert = UIAlertController(title: "", message: "You have already purchased all categories", preferredStyle: .alert)
+                
+                let yesButton = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    alert.dismiss(animated: true)
+                })
+                
+                alert.addAction(yesButton)
+                present(alert, animated: true)
+                return
+            }
+            
+            let uvc = appDelegate.storyBoard?.instantiateViewController(withIdentifier: "UnLockViewController") as? UnLockViewController
+            self.navigationController?.pushViewController(uvc!, animated: true)
+        }
+        
     }
     
     func adjustTextColor(){

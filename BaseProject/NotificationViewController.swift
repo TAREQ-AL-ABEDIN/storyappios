@@ -19,7 +19,7 @@ class NotificationViewController: UIViewController,UITableViewDelegate, UITableV
         if let path = Bundle.main.path(forResource: "Database", ofType: "plist") {
             let dictRoot = NSDictionary(contentsOfFile: path)
             if let dict = dictRoot {
-                self.dataArray = (dict["Stories"] as! [NSDictionary])
+                //self.dataArray = (dict["Stories"] as! [NSDictionary])
                 //print("allStories \(allStories)")
             }
         }

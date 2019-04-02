@@ -138,9 +138,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,VungleSDKDelegate {
     var isPlayable : Bool = false
     var bannerView: GADBannerView!
     
-    let admob_appID = "ca-app-pub-4806809135067780~7012178951"
-    let admob_app_banner_unitID = "ca-app-pub-4806809135067780/8488912151"
-    let admob_app_inters_unitID = "ca-app-pub-4806809135067780/3821704403"
+    /*let admob_appID = "ca-app-pub-9357508181375133~9165489839"
+    let admob_app_banner_unitID = "ca-app-pub-9357508181375133/4268386374"
+    let admob_app_inters_unitID = "ca-app-pub-9357508181375133/9440822001"*/
+    
+    let admob_appID = "ca-app-pub-9357508181375133~5833788911"
+    let admob_app_banner_unitID = "ca-app-pub-9357508181375133/1130975772"
+    let admob_app_inters_unitID = "ca-app-pub-9357508181375133/6163810601"
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -251,7 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,VungleSDKDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         if (prefs.value(forKey:"ageRestriction") != nil && (prefs.value(forKey:"ageRestriction") as! String == "YES")) {
-            //self.requestForData()
+            self.requestForData()
         }
     }
     

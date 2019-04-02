@@ -53,8 +53,6 @@ class CategoryViewController: UIViewController,GADInterstitialDelegate {
         collectionView.collectionViewLayout = flowLayout
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-         self.reloadData()
-        
         let midIndexPath = IndexPath(row: infiniteSize / 2, section: 0)
         collectionView.scrollToItem(at: midIndexPath,
                                     at: .centeredHorizontally,
@@ -66,6 +64,9 @@ class CategoryViewController: UIViewController,GADInterstitialDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.reloadData()
+        
         if appDelegate.bannerView != nil{
             appDelegate.bannerView.alpha = 1
         }
